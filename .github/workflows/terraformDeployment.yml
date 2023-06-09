@@ -1,14 +1,6 @@
 name: "TF Template Workflow"
 
 on:
-  workflow_call:
-    secrets:
-      AZURE_AD_CLIENT_ID:
-        required: true
-      AZURE_AD_TENANT_ID:
-        required: true
-      ARM_SUBSCRIPTION_ID:
-        required: true
   workflow_dispatch:
 
 permissions:
