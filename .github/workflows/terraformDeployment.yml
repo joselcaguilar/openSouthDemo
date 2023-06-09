@@ -146,7 +146,7 @@ jobs:
           ARM_CLIENT_ID: ${{ secrets.AZURE_AD_CLIENT_ID }}
           ARM_TENANT_ID: ${{ secrets.AZURE_AD_TENANT_ID }}
           ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
-          ARM_CLIENT_SECRET: hK.8Q~ASTVCjj6gsWsJ1zDaAmCk1HqC2pzkacadx
+          #ARM_CLIENT_SECRET: hK.8Q~ASTVCjj6gsWsJ1zDaAmCk1HqC2pzkacadx
           ARM_USE_OIDC: true
 
       - name: Build docker image
