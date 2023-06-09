@@ -1,0 +1,8 @@
+{
+    "versions": {
+        "terraform": "1.4.6",
+        "tfSec": "v1.28.1",
+        "tfLint": "v0.46.1",
+        "tfLintAzureRules": "v0.23.0"
+    }
+}
