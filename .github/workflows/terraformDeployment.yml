@@ -112,7 +112,7 @@ jobs:
           sarif_file: ./src/vm/tfsec-app-services.sarif
 
   deploment:
-    name: Frontend deployment
+    name: Deployment
     needs: [check_acr_vulns, check_vm_vulns]
     runs-on: ubuntu-latest
 
@@ -127,7 +127,6 @@ jobs:
           subscription-id: ${{ secrets.ARM_SUBSCRIPTION_ID }}
 
       - name: Create Resource Group and Storage Account for TF State
-        if: ${{ github.event.inputs.DEPLOY_PLAN_ONLY == 'true' || github.event.inputs.DEPLOY == 'true' }}
         uses: azure/CLI@v1
         with:
           inlineScript: |
@@ -136,7 +135,7 @@ jobs:
             az storage container create -n tfstate --account-name ${{ env.TF_BACKEND_STORAGE_ACCOUNT }}
 
       - name: ACR TF Deployment
-        #if: needs.check_acr_vulns.outputs.tfsecOutcome == 'success' && needs.check_acr_vulns.outputs.tflintOutcome == 'success'
+        if: needs.check_acr_vulns.outputs.tfsecOutcome == 'success' && needs.check_acr_vulns.outputs.tflintOutcome == 'success'
         working-directory: ./src/container-registry
         run: |
           terraform init
@@ -177,7 +176,7 @@ jobs:
           docker push opensouthcode23jl.azurecr.io/${{ env.imageName }}:latest
 
       - name: VM TF Deployment
-        #if: needs.check_vm_vulns.outputs.tfsecOutcome != 'success' && needs.check_vm_vulns.outputs.tflintOutcome == 'success' # skipping tfsec for demo purposes
+        if: needs.check_vm_vulns.outputs.tfsecOutcome != 'success' && needs.check_vm_vulns.outputs.tflintOutcome == 'success'
         working-directory: ./src/vm
         run: |
           terraform init
