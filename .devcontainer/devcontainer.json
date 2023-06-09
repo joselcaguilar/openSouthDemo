@@ -1,0 +1,18 @@
+{
+	"name": "openSouthTeamImage",
+	"image": "opensouthcode23jl.azurecr.io/opensouthws23:latest",
+	// Custom Codespaces settings
+	"settings": {
+		"files.eol": "\r\n",
+		"terminal.integrated.shell.linux": "/bin/bash",
+		"editor.tabSize": 2,
+		"terminal.integrated.scrollback": 2000
+	},
+	// Codespaces extensions to be consumed
+	"extensions": [
+		"hashicorp.terraform",
+		"ms-vscode.azurecli",
+		"github.vscode-github-actions",
+		"ms-vscode.powershell"
+	]
+}
