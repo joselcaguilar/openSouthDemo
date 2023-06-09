@@ -13,6 +13,7 @@
 		"hashicorp.terraform",
 		"ms-vscode.azurecli",
 		"github.vscode-github-actions",
-		"ms-vscode.powershell"
+		"ms-vscode.powershell",
+		"tfsec.tfsec"
 	]
 }
