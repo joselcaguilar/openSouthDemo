@@ -149,9 +149,9 @@ jobs:
           ARM_USE_OIDC: true
 
       - name: Build docker image
-        working-directory: .
+        working-directory: ${{ github.workspace }}
         run: |
-          docker build -t ${{ env.imageName }}:${{ github.run_number }} -f Dockerfile .
+          docker build -t ${{ env.imageName }}:${{ github.run_number }} -f DockerFile .
           docker tag "${{ env.imageName }}:${{ github.run_number }}" "opensouthcode23jl.azurecr.io/${{ env.imageName }}:latest"
 
       # Run analyzers
