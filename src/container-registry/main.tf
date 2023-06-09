@@ -26,3 +26,8 @@ locals {
     product_version = "0.0.1"
   }
 }
+
+resource "azurerm_resource_group" "rg" {
+  name     = var.resourceGroup
+  location = var.location
+}

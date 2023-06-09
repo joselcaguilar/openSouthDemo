@@ -19,7 +19,7 @@ terraform {
 }
 
 resource "azurerm_resource_group" "hugrg" {
-  name     = "hub-resources"
+  name     = "hub-opensouthcode"
   location = "West Europe"
 }
 

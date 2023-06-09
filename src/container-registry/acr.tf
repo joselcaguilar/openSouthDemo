@@ -1,6 +1,6 @@
 resource "azurerm_container_registry" "acr" {
   name                = var.acrResourceName
-  resource_group_name = var.resourceGroup
+  resource_group_name = azurerm_resource_group.rg.name
   location            = "westeurope"
   sku                 = "Standard"
   admin_enabled       = false
