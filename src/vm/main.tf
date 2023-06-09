@@ -33,7 +33,7 @@ resource "azurerm_virtual_network" "vnethub" {
 resource "azurerm_subnet" "snetvm" {
   name                 = "internalsnet"
   resource_group_name  = azurerm_resource_group.hugrg.name
-  virtual_network_name = azurerm_virtual_network.hugrg.name
+  virtual_network_name = azurerm_virtual_network.vnethub.name
   address_prefixes     = ["10.0.1.0/24"]
 }
 
@@ -44,7 +44,7 @@ resource "azurerm_network_interface" "nicvm" {
 
   ip_configuration {
     name                          = "internal"
-    subnet_id                     = azurerm_subnet.hugrg.id
+    subnet_id                     = azurerm_subnet.snetvm.id
     private_ip_address_allocation = "Dynamic"
   }
 }
@@ -63,7 +63,7 @@ resource "azurerm_linux_virtual_machine" "vm" {
   admin_username                  = "adminuser"
   admin_password                  = random_password.password.result
   network_interface_ids = [
-    azurerm_network_interface.example.id,
+    azurerm_network_interface.nicvm.id,
   ]
 
   os_disk {
