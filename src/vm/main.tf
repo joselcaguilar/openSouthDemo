@@ -18,6 +18,12 @@ terraform {
   }
 }
 
+provider "azurerm" {
+  subscription_id = "4572a41c-c128-4e47-bbbc-19d1a188492d"
+  tenant_id       = "16b3c013-d300-468d-ac64-7eda0820b6d3"
+  features {}
+}
+
 resource "azurerm_resource_group" "hugrg" {
   name     = "hub-opensouthcode"
   location = "West Europe"
@@ -77,8 +83,4 @@ resource "azurerm_linux_virtual_machine" "vm" {
     sku       = "20.04-LTS"
     version   = "latest"
   }
-}
-
-output "admin_password" {
-  value = random_password.password.result
 }
